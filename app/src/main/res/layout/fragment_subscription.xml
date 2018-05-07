@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="#c7b8a0"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:id="@+id/tv_subscription_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Subscription"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tv_fname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="36dp"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="First Name:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/et_fname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_fname" />
+
+    <TextView
+        android:id="@+id/tv_lname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_fname"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="Last Name:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/et_lname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_lname" />
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="Address:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/et_lname" />
+
+
+    <EditText
+        android:id="@+id/et_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_address" />
+
+
+
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="Click to Select Date of Birth"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/et_address"
+        android:layout_marginTop="36dp" />
+
+
+
+
+
+    <TextView
+        android:id="@+id/tv_favouriatemovie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_date"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="Favouriate Movie:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/et_favouriatemovie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_favouriatemovie" />
+
+    <TextView
+        android:id="@+id/tv_currentjob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="Current Job:"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/et_favouriatemovie"
+        android:layout_marginTop="36dp" />
+
+    <EditText
+        android:id="@+id/et_currentjob"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_currentjob" />
+
+    <TextView
+        android:id="@+id/tv_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_currentjob"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="Monash Email:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_email" />
+
+    <TextView
+        android:id="@+id/tv_psd1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_email"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="Set a Password:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/et_psd1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_psd1" />
+
+    <TextView
+        android:id="@+id/tv_psd2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_psd1"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="Re-enter Password:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <EditText
+        android:id="@+id/et_psd2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_psd2" />
+
+    <TextView
+        android:id="@+id/tv_sid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_psd2"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="Student ID:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <EditText
+        android:id="@+id/et_sid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_sid" />
+
+
+
+
+
+
+
+
+    <RadioGroup
+        android:id="@+id/genderradio"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_sid"
+        android:checkedButton="@+id/rb_sem1"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <RadioButton
+            android:id="@+id/rb_male"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Male" />
+        <RadioButton
+            android:id="@+id/rb_female"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Female" />
+    </RadioGroup>
+
+
+
+
+
+    <TextView
+        android:id="@+id/tv_course"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/genderradio"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="Course"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <Spinner
+        android:id="@+id/sp_course"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_course"
+        android:entries="@array/course_array"
+        android:paddingBottom="@dimen/activity_vertical_margin"/>
+
+    <TextView
+        android:id="@+id/tv_favourunit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sp_course"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="Favouriate Unit"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <Spinner
+        android:id="@+id/sp_favourunit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_favourunit"
+        android:entries="@array/unit_array"
+        android:paddingBottom="@dimen/activity_vertical_margin"/>
+
+    <TextView
+        android:id="@+id/tv_favoursport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sp_favourunit"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="Favouriate Sport"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <Spinner
+        android:id="@+id/sp_favoursport"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_favoursport"
+        android:entries="@array/sport_array"
+        android:paddingBottom="@dimen/activity_vertical_margin"/>
+
+    <TextView
+        android:id="@+id/tv_nationality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sp_favoursport"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="Nationality"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <Spinner
+        android:id="@+id/sp_nationality"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_nationality"
+        android:entries="@array/nation_array"
+        android:paddingBottom="@dimen/activity_vertical_margin"/>
+
+    <TextView
+        android:id="@+id/tv_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sp_nationality"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="Native Language"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <Spinner
+        android:id="@+id/sp_language"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_language"
+        android:entries="@array/language_array"
+        android:paddingBottom="@dimen/activity_vertical_margin"/>
+
+    <TextView
+        android:id="@+id/tv_studymode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sp_language"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="Study Mode"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <Spinner
+        android:id="@+id/sp_studymode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/mode_array"
+        android:layout_below="@+id/tv_studymode"/>
+
+    <Button
+        android:id="@+id/button_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sp_studymode"
+        android:text="Submit" />
+
+
+</RelativeLayout>

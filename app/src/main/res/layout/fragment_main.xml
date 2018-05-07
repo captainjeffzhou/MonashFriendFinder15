@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#c7b8a0"
+    android:padding="@dimen/activity_horizontal_margin">
+
+    <TextView
+        android:id="@+id/tv_home_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:text="Home"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/tv_studname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_home_title"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:id="@+id/tv_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome to MonashFriendFinder!"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_marginBottom="23dp"
+        android:layout_below="@+id/tv_studname"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/tv_weather"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_welcome"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_below="@+id/tv_weather"
+        android:layout_marginBottom="16dp"
+        />
+
+
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="center"
+        android:src="@drawable/main"
+        android:layout_below="@+id/tv_date"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
+

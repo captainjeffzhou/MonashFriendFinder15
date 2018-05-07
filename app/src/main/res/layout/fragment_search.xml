@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="450dp"
+    android:padding="1dp"
+    android:background="#c7b8a0"
+    android:orientation="vertical"
+    >
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="31dp"
+
+        >
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+
+            android:layout_width="match_parent"
+            android:layout_height="31dp"
+            android:padding="1dp"
+            android:orientation="horizontal"
+            >
+            <TextView
+                android:id="@+id/txt_selected"
+                android:layout_width="wrap_content"
+                android:layout_height="31dp"
+                android:text="Selected attributes:"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+
+
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:id="@+id/linearLayouttop"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="1dp">
+
+        <Button
+            android:id="@+id/bt_search"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="0dp"
+            android:layout_below="@+id/txt_selected"
+            android:text="Search"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <Button
+            android:id="@+id/bt_matchingmap"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/txt_selected"
+            android:layout_marginTop="0dp"
+            android:text="Show Map"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <Button
+            android:id="@+id/bt_moviedetail"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/txt_selected"
+            android:layout_marginTop="0dp"
+            android:text="Movie details"
+            android:textAppearance="?android:attr/textAppearanceSmall" />
+
+        <Button
+            android:id="@+id/bt_addf"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/txt_selected"
+
+
+            android:text="Add friend"
+            android:layout_weight="0.72" />
+    </LinearLayout>
+
+
+    <HorizontalScrollView
+        android:layout_width="1200dp"
+        android:layout_height="360dp"
+        android:layout_below="@+id/linearLayouttop">
+
+
+        <LinearLayout
+            android:layout_width="1200dp"
+            android:layout_height="360dp"
+            android:layout_below="@+id/xliner"
+            android:orientation="horizontal"
+
+            android:weightSum="1">
+
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/linearLayouttop"
+                android:orientation="vertical"
+
+                android:weightSum="1">
+
+
+                <ListView
+                    android:id="@+id/listviewinsearch"
+                    android:layout_width="4800dp"
+                    android:layout_height="360dp"
+                    android:listSelector="@android:color/holo_red_dark"
+
+                    />
+
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+
+</LinearLayout>

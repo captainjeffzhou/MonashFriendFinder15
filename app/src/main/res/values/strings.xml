@@ -1,0 +1,58 @@
+<resources>
+    <string name="app_name">MonashFriendFinder</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+
+    <string-array name="course_array">
+        <item>MIT</item>
+        <item>BIS</item>
+        <item>MDBS</item>
+        <item>MBA</item>
+    </string-array>
+
+    <string-array name="unit_array">
+        <item>FIT5032</item>
+        <item>FIT5042</item>
+        <item>FIT5036</item>
+        <item>FIT5148</item>
+        <item>FIT9132</item>
+        <item>FIT9131</item>
+    </string-array>
+
+    <string-array name="sport_array">
+        <item>Swimming</item>
+        <item>Baseball</item>
+        <item>Tennis</item>
+        <item>Football</item>
+        <item>Basketball</item>
+    </string-array>
+
+    <string-array name="nation_array">
+        <item>Australia</item>
+        <item>India</item>
+        <item>China</item>
+        <item>Vietnam</item>
+        <item>Britain</item>
+        <item>Newsland</item>
+        <item>Brazil</item>
+    </string-array>
+
+    <string-array name="language_array">
+        <item>Chinese</item>
+        <item>Indian</item>
+        <item>English</item>
+        <item>Portuguese</item>
+    </string-array>
+
+    <string-array name="mode_array">
+        <item>full-time</item>
+        <item>part-time</item>
+    </string-array>
+    <string name="title_activity_maps">Map</string>
+
+
+</resources>

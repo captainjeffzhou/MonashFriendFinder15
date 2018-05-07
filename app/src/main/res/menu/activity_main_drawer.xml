@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_login"
+            android:title="Login" />
+        <item
+            android:id="@+id/nav_subscription"
+            android:title="Subscription" />
+        <item
+            android:id="@+id/nav_update_profiles"
+            android:title="Update Profiles" />
+        <item
+            android:id="@+id/nav_report"
+            android:title="Display Report" />
+        <item
+            android:id="@+id/nav_search"
+            android:title="Search Friends" />
+        <item
+            android:id="@+id/nav_matching_map"
+            android:title="Matching Students on map" />
+        <item
+            android:id="@+id/nav_my_friends"
+            android:title="My Friends" />
+        <item
+            android:id="@+id/nav_friends_map"
+            android:title="Friends on map" />
+        <item
+            android:id="@+id/nav_pie"
+            android:title="All Favourite Units" />
+        <item
+            android:id="@+id/nav_bar"
+            android:title="Places I visited" />
+
+        <item
+            android:id="@+id/nav_main"
+            android:title="Home" />
+        <item
+            android:id="@+id/nav_movie"
+            android:title="The student and his movie" />
+
+
+
+    </group>
+</menu>

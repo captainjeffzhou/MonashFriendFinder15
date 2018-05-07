@@ -1,0 +1,828 @@
+package com.example.cpzhoucheng.monashfriendfinder;
+/////Bar chart class
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.XAxis.XAxisPosition;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.interfaces.datasets.IDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
+//import com.xxmassdeveloper.mpchartexample.notimportant.DemoBase;
+
+import com.github.mikephil.charting.charts.BarChart;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.data.BarData;
+import com.github.mikephil.charting.data.BarDataSet;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+
+/**
+ * Created by CPZHOUCHENG on 12/5/17.
+ */
+
+public class FragmentBar extends Fragment implements View.OnClickListener {
+
+
+    View vFragmentBar;
+    BarChart bchart;
+    ArrayList<BarEntry> BARENTRY;
+    ArrayList<String> BarEntryLabels;
+    BarDataSet Bardataset;
+    BarData BARDATA;
+    BarData BARDATA2;
+    private static String input = "";
+    TextView tv1;
+    TextView tv2;
+    TextView des;
+    EditText ev;
+    Button clear;
+    Button find;
+    String[] location;
+    String[] count;
+    private static int size = 0;
+
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
+            savedInstanceState) {
+        vFragmentBar = inflater.inflate(R.layout.barchartfile, container, false);
+
+
+        clear = (Button) vFragmentBar.findViewById(R.id.clears);
+        find = (Button) vFragmentBar.findViewById(R.id.find);
+
+        ev = (EditText) vFragmentBar.findViewById(R.id.input);
+        tv1 = (TextView) vFragmentBar.findViewById(R.id.hint1);
+        tv2 = (TextView) vFragmentBar.findViewById(R.id.hint2);
+        des = (TextView) vFragmentBar.findViewById(R.id.description);
+
+        clear.setOnClickListener(this);
+        find.setOnClickListener(this);
+
+
+
+
+
+        bchart = (BarChart) vFragmentBar.findViewById(R.id.bar_chart);
+        return vFragmentBar;
+
+    }
+
+    public void onClick(View v) {
+
+
+        switch (v.getId()) {
+
+            case R.id.find:
+                input = ev.getText().toString();
+
+                if (input.length() < 10 || !input.contains(",")) {
+                    Toast.makeText(getActivity().getApplicationContext(), "Wrong input format", Toast.LENGTH_LONG).show();
+
+                } else {
+                    final String[] dates = input.split(",");
+                    //-  new AsyncTask<Void, Void, JSONArray>() {
+                    //-     @Override
+                    //-      protected JSONArray doInBackground(Void... params) {
+
+
+                    //ArrayList<HashMap<String, String>> sitesDates = RestClient.getLocationsWithDate(dates[0], dates[1]);
+                    String sitesDates = RestClient.getLocationsWithDate(dates[0], dates[1]);
+
+
+                    //-         return ja;
+                    //-      }
+
+                    //-    protected void onPostExecute(JSONArray response) {
+
+                   /// size = sitesDates.size();
+                    location = new String[size];
+                    count = new String[size];
+
+                    for (int i = 0; i < size; i++) {
+
+                    ///    HashMap<String, String> m = sitesDates.get(i);
+                  ///      location[i] = m.get("locationname");
+                  ///      count[i] = m.get("frequency");
+                    }
+
+                }
+
+
+                    //-    }
+                    //-  }.execute();
+
+
+
+                BARENTRY = new ArrayList<>();
+
+                BarEntryLabels = new ArrayList<String>();
+                ArrayList<String> labels = new ArrayList<String>();
+
+
+                //- AddValuesToBARENTRY();
+
+                //-AddValuesToBarEntryLabels();
+                String ss = "";
+                for (int i = 0; i < size; i++) {
+                    BARENTRY.add(new BarEntry(i, Integer.parseInt(count[i])));
+                    BarEntryLabels.add(location[i]);
+                    String s = location[i] + ":" + count[i] + " ";
+                    ss = ss + s;
+
+                }
+                des.setText(ss);
+
+
+                Bardataset = new BarDataSet(BARENTRY, "Units");
+
+                //BARDATA = new BarData(<BarEntryLabels>, Bardataset);
+                BARDATA = new BarData(Bardataset, Bardataset);
+                //BARDATA2 = new BarData(Bardataset,Bardataset);
+
+                Bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
+
+                bchart.setData(BARDATA);
+                //bchart.setData(BARDATA2);
+
+                bchart.animateY(3000);
+                bchart.refreshDrawableState();
+                Fragment frg = null;
+
+
+                FragmentManager fragmentManagerB = getFragmentManager();
+                fragmentManagerB.beginTransaction().replace(R.id.content_frame,
+                        new FragmentMain()).commit();
+                frg = fragmentManagerB.findFragmentByTag("FragmentBar");
+                final FragmentTransaction ft = fragmentManagerB.beginTransaction();
+                ft.detach(frg);
+                ft.attach(frg);
+                ft.commit();
+
+
+
+                break;
+            case R.id.clears:
+                ev.setText("");
+                break;
+
+
+        }
+
+    }
+
+
+    //BARENTRY = new ArrayList<>();
+
+    // BarEntryLabels = new ArrayList<String>();
+    // ArrayList<String> labels = new ArrayList<String>();
+
+
+    // AddValuesToBARENTRY();
+
+    //AddValuesToBarEntryLabels();
+    // BarEntryLabels.add("January");
+    // BarEntryLabels.add("February");
+    // BarEntryLabels.add("March");
+    //  BarEntryLabels.add("April");
+    //  BarEntryLabels.add("May");
+    //  BarEntryLabels.add("June");
+
+    // Bardataset = new BarDataSet(BARENTRY, "Units");
+
+    // //BARDATA = new BarData(<BarEntryLabels>, Bardataset);
+    // BARDATA = new BarData(Bardataset,Bardataset);
+    // //BARDATA2 = new BarData(Bardataset,Bardataset);
+
+    // Bardataset.setColors(ColorTemplate.COLORFUL_COLORS);
+
+    // bchart.setData(BARDATA);
+    //bchart.setData(BARDATA2);
+
+    // bchart.animateY(3000);
+
+
+    }
+
+
+
+    //public void AddValuesToBARENTRY(){
+
+    //    BARENTRY.add(new BarEntry(2f, 0));
+    //    BARENTRY.add(new BarEntry(4f, 1));
+   //     BARENTRY.add(new BarEntry(6f, 20));
+   //     BARENTRY.add(new BarEntry(8f, 3));
+   //     BARENTRY.add(new BarEntry(1, 1));
+   //     BARENTRY.add(new BarEntry(3f, 5));
+
+   // }
+
+   // public void AddValuesToBarEntryLabels() {
+
+    //    BarEntryLabels.add("January");
+    //    BarEntryLabels.add("February");
+    //    BarEntryLabels.add("March");
+    //    BarEntryLabels.add("April");
+    //    BarEntryLabels.add("May");
+    //    BarEntryLabels.add("June");
+   // }
+
+
+
+
+
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+package com.example.cpzhoucheng.monashfriendfinder;
+///piec ahrt
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.icu.util.ULocale;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.util.DisplayMetrics;
+import android.widget.RelativeLayout;
+import android.widget.Toast;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.graphics.Color;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.util.DisplayMetrics;
+
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.utils.ColorTemplate;
+
+import com.github.mikephil.charting.charts.PieChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.PieData;
+import com.github.mikephil.charting.data.PieDataSet;
+import com.github.mikephil.charting.data.PieEntry;
+import com.github.mikephil.charting.formatter.PercentFormatter;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
+import com.github.mikephil.charting.utils.ColorTemplate;
+import com.google.gson.JsonArray;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Locale;
+
+
+/**
+ * Created by CPZHOUCHENG on 12/5/17.
+ */
+
+
+public class FragmentPie extends Fragment
+{
+    View vFragmentPie;
+    private PieChart pChart;
+
+    private float[] yData = { 5, 10, 3, 2, 8 };
+    private String[] xData = { "FIT9132", "FIT5032", "FIT5036", "FIT9131", "FIT5171" };
+    private static float[] yDatas;
+    private static String[] xDatas;
+
+    @Nullable
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle
+            savedInstanceState)
+    {
+        vFragmentPie = inflater.inflate(R.layout.piechartfile, container, false);
+        //return vFragmentPie;
+
+        pChart = (PieChart) vFragmentPie.findViewById(R.id.pichartinner);
+        // add pie chart to main layout
+        //vFragmentPie.addView(pChart);
+        vFragmentPie.setBackgroundColor(Color.parseColor("#55656C"));
+
+        // configure pie chart
+        pChart.setUsePercentValues(true);
+        //==
+        Description description = new Description();
+        description.setText("Unit Frequency");
+        pChart.setDescription(description);
+
+
+
+
+
+
+        ///
+        //pChart.setD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // enable hole and configure
+        pChart.setDrawHoleEnabled(true);
+        pChart.setTransparentCircleRadius(64f);
+        pChart.setHoleRadius(7);
+        pChart.setTransparentCircleRadius(10);
+        pChart.calculateOffsets();//me
+        //pChart.getDataSetIndexForIndex(0);
+        // pChart.isUsePercentValuesEnabled();
+        //-pChart.getCenterText();//me
+
+        // enable rotation of the chart by touch
+        pChart.setRotationAngle(0);
+        pChart.setRotationEnabled(true);
+
+        // set a chart value selected listener
+        //pChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+
+        //  //@Override
+        // public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
+        //     // display msg when value selected
+        //     if (e == null)
+        //         return;
+
+        //     // Toast.makeText(getActivity(),xData[e.getXIndex()] + " = " + e.getValue() + "%", Toast.LENGTH_SHORT).show();
+        //  }
+
+        //  @Override
+        //  public void onNothingSelected() {
+
+        //  }
+        //});
+
+
+
+
+
+
+
+
+
+        //-pChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+
+
+        //-  @Override
+        //-  public void onNothingSelected() {
+
+        //-  }
+
+        //-   //@Override
+        //-   public void onValueSelected(Entry e, Highlight h) {
+        //-       if (e == null)
+        //-           return;
+               // Toast.makeText(getActivity(),
+                //        xData[(int)e.getX()] + " = " + e.getData() + "%", Toast.LENGTH_SHORT).show();
+
+        //-   }
+
+
+        //- });
+
+
+
+
+
+////////////me, get data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        loaddata();
+        // add data
+        addData();
+
+        // customize legends
+        Legend l = pChart.getLegend();
+        l.setPosition(Legend.LegendPosition.RIGHT_OF_CHART);
+        l.setXEntrySpace(7);
+        l.setYEntrySpace(5);
+        return vFragmentPie;
+    }
+
+
+
+
+//    private void addData() {
+//        ArrayList<PieEntry> yVals1 = new ArrayList<PieEntry>();
+
+ //       for (int i = 0; i < yData.length; i++)
+ //           yVals1.add(new PieEntry(yData[i], i));
+
+//        ///
+ //       ArrayList<String> xVals = new ArrayList<String>();
+
+//        for (int i = 0; i < xData.length; i++)
+ //           xVals.add(xData[i]);
+
+ //       // create pie data set
+//
+
+
+//        //Description description = new Description();
+//        //description.setText("Unit Frequency");
+//        PieDataSet dataSet = new PieDataSet(yVals1, "All Favourite Units");
+ //       dataSet.setSliceSpace(3);
+ //       dataSet.setSelectionShift(5);
+
+
+
+
+
+
+ //       // add many colors
+ //       ArrayList<Integer> colors = new ArrayList<Integer>();
+
+ //       for (int c : ColorTemplate.VORDIPLOM_COLORS)
+//            colors.add(c);
+
+ //       for (int c : ColorTemplate.JOYFUL_COLORS)
+ //           colors.add(c);
+
+//        for (int c : ColorTemplate.COLORFUL_COLORS)
+ //           colors.add(c);
+
+ //       for (int c : ColorTemplate.LIBERTY_COLORS)
+ //           colors.add(c);
+
+ //       for (int c : ColorTemplate.PASTEL_COLORS)
+ //           colors.add(c);
+
+ //       colors.add(ColorTemplate.getHoloBlue());
+ //       dataSet.setColors(colors);
+
+
+
+
+
+
+ //       // instantiate pie data object now
+//        PieData data = new PieData(dataSet);
+//        data.setValueFormatter(new PercentFormatter());
+//        data.setValueTextSize(11f);
+//        data.setValueTextColor(Color.GRAY);
+
+//        pChart.setData(data);
+
+        // undo all highlights
+//        pChart.highlightValues(null);
+//
+        // update pie chart
+ //       pChart.invalidate();
+//    }
+
+
+
+
+   private void loaddata()
+   {
+
+
+       //+ new AsyncTask<Void, Void, ArrayList<HashMap<String, String>>>()
+       //+ {
+       //+    @Override
+       //+   protected ArrayList<HashMap<String, String>> doInBackground(Void... params)
+       //+   {
+              //- JSONArray jsonArray = RestClient.getUnitsAndFrequencys();
+
+
+       //+   ArrayList<HashMap<String, String>> maps= RestClient.getUnitAndFrequencyF();
+
+
+              //- return jsonArray;
+               //-return maps;
+       //+   yDatas = new float[maps.size()];
+       //+    xDatas = new String[maps.size()];
+       //+      return maps;
+
+       //+    }
+
+       //+   protected void onPostExecute(ArrayList<HashMap<String, String>> mapss)
+//+
+       //+   {
+
+              // yDatas = new float[maps.size()];
+              // xDatas = new String[maps.size()];
+
+              //- int size = response.length();
+       //+       int size = maps.size();
+
+               //-  for (int i = 0; i < size; i++) {
+               //-      try {
+               //-          JSONObject object = response.getJSONObject(i);
+               //-         yDatas[i] = Float.parseFloat(object.getString("frequency"));
+               //-         xDatas[i] = object.getString("favouriteunit");
+               //-     } catch (JSONException e) {
+               //-        Log.e("MYAPP", "unexpected JSON exception", e);
+               //-        break;
+               //-    }
+               //- }
+       //+       for (int i = 0; i < size; i++) {
+       //+            yDatas[i] = Float.parseFloat(maps.get(i).get("frequency"));
+       //+           xDatas[i] = maps.get(i).get("favouriteunit");
+
+       //+       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+               /// now set data
+
+
+
+       //+ }  }.execute();//else
+
+   }
+
+
+
+
+    private void addData() {
+        ArrayList<PieEntry> yVals1 = new ArrayList<PieEntry>();
+
+        for (int i = 0; i < yData.length; i++)
+            yVals1.add(new PieEntry(yData[i], i));
+
+        ///
+        ArrayList<String> xVals = new ArrayList<String>();
+
+        for (int i = 0; i < xData.length; i++)
+            xVals.add(xData[i]);
+
+        // create pie data set
+
+
+
+        //Description description = new Description();
+        //description.setText("Unit Frequency");
+        PieDataSet dataSet = new PieDataSet(yVals1, "All Favourite Units");
+        dataSet.setSliceSpace(3);
+        dataSet.setSelectionShift(5);
+
+
+
+
+
+
+        // add many colors
+        ArrayList<Integer> colors = new ArrayList<Integer>();
+
+        for (int c : ColorTemplate.VORDIPLOM_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.JOYFUL_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.COLORFUL_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.LIBERTY_COLORS)
+            colors.add(c);
+
+        for (int c : ColorTemplate.PASTEL_COLORS)
+            colors.add(c);
+
+        colors.add(ColorTemplate.getHoloBlue());
+        dataSet.setColors(colors);
+
+
+
+
+
+
+        // instantiate pie data object now
+        PieData data = new PieData(dataSet);
+        data.setValueFormatter(new PercentFormatter());
+        data.setValueTextSize(11f);
+        data.setValueTextColor(Color.GRAY);
+
+        pChart.setData(data);
+
+        // undo all highlights
+        pChart.highlightValues(null);
+
+        // update pie chart
+        pChart.invalidate();
+    }
+
+
+
+
+
+
+
+
+
+
+
+package com.example.cpzhoucheng.monashfriendfinder;
+/////map
+import android.app.Fragment;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.mapbox.mapboxsdk.MapboxAccountManager;
+import com.mapquest.mapping.maps.OnMapReadyCallback;
+import com.mapquest.mapping.maps.MapboxMap;
+import com.mapquest.mapping.maps.MapView;
+import com.mapbox.mapboxsdk.annotations.MarkerOptions;
+import com.mapbox.mapboxsdk.camera.CameraUpdateFactory;
+import com.mapbox.mapboxsdk.geometry.LatLng;
+
+import retrofit2.http.PUT;
+
+/**
+ * Created by CPZHOUCHENG on 6/5/17.
+ */
+
+public class FragmentMatchingMap extends Fragment {
+
+    View mView;
+    GoogleMap mGoogleMap;
+    MapView mMapView;
+
+    public  FragmentMatchingMap()
+    {}
+
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+    }
+
+
+
+    protected  View  onCreate(LayoutInflater inflater, ViewGroup container, Bundle
+            savedInstanceState) {
+
+        mView = inflater.inflate(R.layout.fragment_matchingmap, container, false);
+        return mView;
+        //View MapFragment;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState)
+    {super.onViewCreated(view, savedInstanceState);
+
+
+        mMapView = (MapView) mView.findViewById(R.id.mapp);
+        if (mMapView != null)
+        {
+            mMapView.onCreate(null);
+            mMapView.onResume();
+            //mMapView.getMapAsync(this);
+
+
+        }
+
+
+    }
+
+
+
+    @Override
+    public  void onMapReady(GoogleMap googleMap){
+
+        MapsInitializer.initialize(getActivity());
+        mGoogleMap = googleMap;
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        googleMap.addMarker(new com.google.android.gms.maps.model.MarkerOptions().position(new com.google.android.gms.maps.model.LatLng()))
+
+
+
+
+    }
+
+
+
+
+
+
+}
+
+
+
+
+
+}

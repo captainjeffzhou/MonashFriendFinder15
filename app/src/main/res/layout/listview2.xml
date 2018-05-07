@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/viewline"
+
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+            <TextView
+                android:id="@+id/tv_ida"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="ID" />
+
+            <TextView
+                android:id="@+id/tv_fna"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="First Name" />
+
+            <TextView
+                android:id="@+id/tv_lna"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="Last Name" />
+            <TextView
+                android:id="@+id/tv_gda"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="Gender" />
+            <TextView
+                android:id="@+id/tv_csea"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="Course" />
+
+            <TextView
+                android:id="@+id/tv_spta"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="Favourite Sport" />
+            <TextView
+                android:id="@+id/tv_uita"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="Favourite Unit" />
+
+            <TextView
+                android:id="@+id/tv_nationa"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="Nationality" />
+            <TextView
+                android:id="@+id/tv_langa"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="Native Language" />
+            <TextView
+                android:id="@+id/tv_moda"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="Study Mode" />
+            <TextView
+                android:id="@+id/tv_adda"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="Address" />
+            <TextView
+                android:id="@+id/tv_subrba"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="Suburb" />
+
+
+
+            <TextView
+                android:id="@+id/tv_sbdatea"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="Subscription Date" />
+
+            <TextView
+                android:id="@+id/tv_emaila"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="Monash Email" />
+
+            <TextView
+                android:id="@+id/tv_doba"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="Date of Birth" />
+
+            <TextView
+                android:id="@+id/tv_mvea"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_weight="1"
+                android:text="Favourite Movie" />
+
+
+
+
+
+        </LinearLayout>
+
+
